@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1081348767635",
+    "project_id": "fb-mymeal-2022",
+    "storage_bucket": "fb-mymeal-2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081348767635:android:30f552161c44a0367c7266",
+        "android_client_info": {
+          "package_name": "com.example.mymeal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081348767635-3vgrus00npcam2ntqi4p1v9ke7uo3dnr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMp1GKwznjAcmfeMEtKxdqerhk3xAz-Ik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081348767635-3vgrus00npcam2ntqi4p1v9ke7uo3dnr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

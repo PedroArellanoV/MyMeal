@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_principal"
+    tools:context=".ui.view.RecipeInformationFragment"
+    android:paddingBottom="80dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivRecipeInformation"
+            android:layout_width="match_parent"
+            android:layout_height="209dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/green_logo_dark">
+
+        </ImageView>
+
+        <!--        <View-->
+        <!--            android:id="@+id/vRecipeInformation"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="46dp"-->
+        <!--            android:background="@drawable/information_recipe_name_shape"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@id/ivRecipeInformation"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+        <TextView
+            android:id="@+id/tvRecipeTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:fontFamily="@font/fredoka_medium"
+            android:textColor="#43604F"
+            android:textSize="24sp"
+            android:maxLines="2"
+            android:background="@drawable/infomation_recipe_name_shape"
+            app:layout_constraintBottom_toBottomOf="@id/ivRecipeInformation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Recipe Name" />
+
+
+
+        <TextView
+            android:id="@+id/tvCreditsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_regular"
+            android:maxLines="3"
+            android:padding="10dp"
+            android:textColor="#43604F"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivRecipeInformation"
+            tools:text="-Pasta with Garlic, Scallions, Cauliflower Breadcrumbs" />
+
+        <TextView
+            android:id="@+id/tvSummaryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/fredoka_medium"
+            android:text="Summary"
+            android:textColor="#43604F"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCreditsText" />
+
+        <TextView
+            android:id="@+id/tvSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_regular"
+            android:padding="10dp"
+            android:textColor="#43604F"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSummaryTitle"
+            tools:text="Ingredients" />
+
+        <TextView
+            android:id="@+id/tvIngredientsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/fredoka_medium"
+            android:text="Ingredients"
+            android:textColor="#43604F"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSummary" />
+
+        <TextView
+            android:id="@+id/tvIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_regular"
+            android:padding="10dp"
+            android:textColor="#43604F"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIngredientsTitle"
+            tools:text="-Ingredients" />
+
+        <TextView
+            android:id="@+id/tvInstructionsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/fredoka_medium"
+            android:text="Instructions"
+            android:textColor="#43604F"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIngredients" />
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_regular"
+            android:padding="10dp"
+            android:textColor="#43604F"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvInstructionsTitle"
+            tools:text="-Ingredients" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
