@@ -9,12 +9,11 @@ import androidx.fragment.app.commit
 import com.example.mymeal.R
 import com.example.mymeal.databinding.ActivityMainBinding
 import com.example.mymeal.ui.view.MainFragment
-import com.example.mymeal.ui.view.SearchFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
-enum class ProviderType {
+enum class ProviderType{
     BASIC
 }
 
@@ -67,20 +66,20 @@ class MainActivity : AppCompatActivity() {
         val mAuth = FirebaseAuth.getInstance()
 
         if (mAuth.currentUser != null) {
-            commitFragment()
+            commitMainFragment()
         } else {
-            commitLoginActivity()
+            commitAuthActivity()
         }
     }
 
-    private fun commitFragment() {
+    private fun commitMainFragment() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add<MainFragment>(R.id.fragment_container)
         }
     }
 
-    private fun commitLoginActivity() {
+    private fun commitAuthActivity() {
         val intent = Intent(this, AuthActivity::class.java)
         startActivity(intent)
     }

@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#91C3A9"
     tools:context="com.example.mymealsproyect.ui.view.RegisterFragment">
+
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#91C3A9"/>
+        android:background="#91C3A9" />
 
     <ImageView
         android:id="@+id/ivMyMealLogo"
@@ -38,38 +38,38 @@
         android:layout_width="250dp"
         android:layout_height="43dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/auth_vector"
         android:fontFamily="@font/fredoka_regular"
         android:inputType="textEmailAddress"
         android:maxLines="1"
         android:paddingStart="12dp"
-        android:textSize="12sp"
-        tools:text="pedro.arellano2001@gmail.com"
-        android:background="@drawable/auth_vector"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivMyMealLogo" />
+        app:layout_constraintTop_toBottomOf="@id/ivMyMealLogo"
+        tools:text="pedro.arellano2001@gmail.com" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvUsername"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:fontFamily="@font/fredoka_regular"-->
-<!--        android:text="username"-->
-<!--        android:textColor="#828282"-->
-<!--        android:textSize="15sp"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/etUsernameRegister"-->
-<!--        app:layout_constraintStart_toStartOf="@id/etEmailRegister" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvUsername"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="5dp"-->
+    <!--        android:fontFamily="@font/fredoka_regular"-->
+    <!--        android:text="username"-->
+    <!--        android:textColor="#828282"-->
+    <!--        android:textSize="15sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/etUsernameRegister"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/etEmailRegister" />-->
 
-<!--    <EditText-->
-<!--        android:id="@+id/etUsernameRegister"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="43dp"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:background="@drawable/auth_vector"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/etEmailRegister" />-->
+    <!--    <EditText-->
+    <!--        android:id="@+id/etUsernameRegister"-->
+    <!--        android:layout_width="250dp"-->
+    <!--        android:layout_height="43dp"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:background="@drawable/auth_vector"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/etEmailRegister" />-->
 
     <TextView
         android:id="@+id/tvPassword"
@@ -88,14 +88,16 @@
         android:layout_width="250dp"
         android:layout_height="43dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/auth_vector"
+        android:fontFamily="@font/fredoka_regular"
         android:inputType="textPassword"
         android:maxLines="1"
         android:paddingStart="12dp"
-        tools:text="pedroarellano"
-        android:background="@drawable/auth_vector"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEmailRegister" />
+        app:layout_constraintTop_toBottomOf="@id/etEmailRegister"
+        tools:text="pedroarellano" />
 
     <TextView
         android:id="@+id/tvRepeatPassword"
@@ -114,14 +116,16 @@
         android:layout_width="250dp"
         android:layout_height="43dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/auth_vector"
+        android:fontFamily="@font/fredoka_regular"
         android:inputType="textPassword"
         android:maxLines="1"
         android:paddingStart="12dp"
-        tools:text="pedroarellano"
-        android:background="@drawable/auth_vector"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPasswordRegister" />
+        app:layout_constraintTop_toBottomOf="@id/etPasswordRegister"
+        tools:text="pedroarellano" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"

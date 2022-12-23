@@ -62,6 +62,11 @@ class MainFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun goToRecommendationInformation() {
         val bundle = bundleOf(
             RECIPE_ID to todayRecommendation.id,

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#91C3A9"
-    tools:context=".ui.view.SearchFragment">
+    tools:context="com.example.mymealsproyect.ui.view.SearchFragment">
 
 
     <androidx.appcompat.widget.SearchView

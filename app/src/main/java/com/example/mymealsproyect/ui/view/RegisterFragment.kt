@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import com.example.mymeal.R
 import com.example.mymeal.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,27 +42,15 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnRegister.setOnClickListener {
-            onRegisterButton()
         }
 
     }
 
-    private fun onRegisterButton() {
-        val email = binding.etEmailRegister
-        val password = binding.etPasswordRegister
-        val repeatPassword = binding.etConfirmPassword
-
-
-        if (email.text.isNotEmpty() && password.text.isNotEmpty() && repeatPassword.text == password.text) {
-            FirebaseAuth.getInstance()
-                .createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        showMainActivity(it.result?.user?.email ?: "", ProviderType.BASIC)
-                    } else showAlert()
-                }
-        }else showAlert()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+
 
 
     private fun showAlert() {
@@ -73,14 +60,6 @@ class RegisterFragment : Fragment() {
         builder.setPositiveButton("Ok", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
-    }
-
-    private fun showMainActivity(email: String, provider: ProviderType) {
-        val intent = Intent(activity, MainActivity::class.java).apply {
-            putExtra(AuthActivity.EMAIL, email)
-            putExtra(AuthActivity.PROVIDER, provider.name)
-        }
-        startActivity(intent)
     }
 
     companion object {

@@ -1,8 +1,7 @@
-package com.example.mymeal.ui.view
+package com.example.mymealsproyect.ui.view
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
