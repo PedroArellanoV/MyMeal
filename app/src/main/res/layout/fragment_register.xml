@@ -3,19 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#91C3A9"
     tools:context="com.example.mymealsproyect.ui.view.RegisterFragment">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#91C3A9" />
 
     <ImageView
         android:id="@+id/ivMyMealLogo"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginTop="114dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/mymealpng_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,27 +45,89 @@
         app:layout_constraintTop_toBottomOf="@id/ivMyMealLogo"
         tools:text="pedro.arellano2001@gmail.com" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/tvUsername"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="5dp"-->
-    <!--        android:fontFamily="@font/fredoka_regular"-->
-    <!--        android:text="username"-->
-    <!--        android:textColor="#828282"-->
-    <!--        android:textSize="15sp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/etUsernameRegister"-->
-    <!--        app:layout_constraintStart_toStartOf="@id/etEmailRegister" />-->
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/fredoka_regular"
+        android:text="username"
+        android:textColor="#828282"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/etUsername"
+        app:layout_constraintStart_toStartOf="@id/etEmailRegister" />
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/etUsernameRegister"-->
-    <!--        android:layout_width="250dp"-->
-    <!--        android:layout_height="43dp"-->
-    <!--        android:layout_marginTop="24dp"-->
-    <!--        android:background="@drawable/auth_vector"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/etEmailRegister" />-->
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="250dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/auth_vector"
+        android:fontFamily="@font/fredoka_regular"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etEmailRegister"
+        tools:text="pedroarellano" />
+
+    <TextView
+        android:id="@+id/tvFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/fredoka_regular"
+        android:text="first name"
+        android:textColor="#828282"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/etFirstName"
+        app:layout_constraintStart_toStartOf="@id/etEmailRegister" />
+
+
+    <EditText
+        android:id="@+id/etFirstName"
+        android:layout_width="250dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/auth_vector"
+        android:fontFamily="@font/fredoka_regular"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etUsername"
+        tools:text="pedroarellano" />
+
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/fredoka_regular"
+        android:text="last name"
+        android:textColor="#828282"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/etLastName"
+        app:layout_constraintStart_toStartOf="@id/etEmailRegister" />
+
+
+    <EditText
+        android:id="@+id/etLastName"
+        android:layout_width="250dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/auth_vector"
+        android:fontFamily="@font/fredoka_regular"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etFirstName"
+        tools:text="pedroarellano" />
 
     <TextView
         android:id="@+id/tvPassword"
@@ -80,55 +138,28 @@
         android:text="password"
         android:textColor="#828282"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/etPasswordRegister"
+        app:layout_constraintBottom_toTopOf="@id/etPassword"
         app:layout_constraintStart_toStartOf="@id/etEmailRegister" />
 
+
     <EditText
-        android:id="@+id/etPasswordRegister"
+        android:id="@+id/etPassword"
         android:layout_width="250dp"
         android:layout_height="43dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/auth_vector"
         android:fontFamily="@font/fredoka_regular"
-        android:inputType="textPassword"
         android:maxLines="1"
         android:paddingStart="12dp"
+        android:inputType="textPassword"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEmailRegister"
-        tools:text="pedroarellano" />
-
-    <TextView
-        android:id="@+id/tvRepeatPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:fontFamily="@font/fredoka_regular"
-        android:text="repeat password"
-        android:textColor="#828282"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/etConfirmPassword"
-        app:layout_constraintStart_toStartOf="@id/etEmailRegister" />
-
-    <EditText
-        android:id="@+id/etConfirmPassword"
-        android:layout_width="250dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/auth_vector"
-        android:fontFamily="@font/fredoka_regular"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:paddingStart="12dp"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPasswordRegister"
+        app:layout_constraintTop_toBottomOf="@id/etLastName"
         tools:text="pedroarellano" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnContinue"
         android:layout_width="75dp"
         android:layout_height="30dp"
         android:layout_marginTop="14dp"
@@ -136,13 +167,13 @@
         android:backgroundTint="#0E8C47"
         android:fontFamily="@font/fredoka_regular"
         android:padding="0dp"
-        android:text="register"
+        android:text="continue"
         android:textAllCaps="false"
         android:textColor="#DCEFE5"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etConfirmPassword" />
+        app:layout_constraintTop_toBottomOf="@id/etPassword"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

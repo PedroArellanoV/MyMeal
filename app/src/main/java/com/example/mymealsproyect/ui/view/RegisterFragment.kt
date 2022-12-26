@@ -6,9 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
+import com.example.mymeal.R
 import com.example.mymeal.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,7 +46,8 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnRegister.setOnClickListener {
+        binding.btnContinue.setOnClickListener {
+            onContinueListener()
         }
 
     }
@@ -52,17 +58,77 @@ class RegisterFragment : Fragment() {
     }
 
 
+    private fun onContinueListener() {
+        val email = binding.etEmailRegister
+        val password = binding.etPassword
+        val username = binding.etUsername
+        val firstname = binding.etFirstName
+        val lastname = binding.etLastName
+
+        if (email.text.isNotEmpty() && password.text.isNotEmpty() && username.text.isNotEmpty() && firstname.text.isNotEmpty() && lastname.text.isNotEmpty()) {
+            FirebaseAuth.getInstance()
+                .createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        startActivity(
+                            it.result?.user?.email ?: "",
+                            ProviderType.BASIC,
+                            username.text.toString(),
+                            firstname.text.toString(),
+                            lastname.text.toString()
+                        )
+                    } else {
+                        showAlert()
+                    }
+                }
+        } else {
+            showAlert()
+        }
+    }
 
     private fun showAlert() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Error")
-        builder.setMessage("Some parameter does not match")
+        builder.setMessage("Some parameter is incomplete")
         builder.setPositiveButton("Ok", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
 
+    private fun startActivity(
+        email: String,
+        provider: ProviderType,
+        username: String,
+        firstname: String,
+        lastname: String
+    ) {
+        val firebaseDB = FirebaseFirestore.getInstance()
+        val intent = Intent(requireActivity(), MainActivity::class.java).apply {
+            putExtra(EMAIL, email)
+            putExtra(PROVIDER, provider)
+            putExtra(USERNAME, username)
+            putExtra(FIRSTNAME, firstname)
+            putExtra(LASTNAME, lastname)
+        }
+
+        firebaseDB.collection("users").document(email).set(
+            hashMapOf(
+                "username" to username,
+                "firstname" to firstname,
+                "lastname" to lastname
+            )
+        )
+
+        startActivity(intent)
+    }
+
     companion object {
+
+        const val EMAIL = "email"
+        const val PROVIDER = "provider"
+        const val USERNAME = "username"
+        const val FIRSTNAME = "firstname"
+        const val LASTNAME = "lastname"
 
         private const val ARG_PARAM1 = "param1"
         private const val ARG_PARAM2 = "param2"

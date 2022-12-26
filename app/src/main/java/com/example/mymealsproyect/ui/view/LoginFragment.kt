@@ -94,7 +94,6 @@ class LoginFragment : Fragment() {
     companion object{
         const val EMAIL = "email"
         const val PROVIDER = "provider"
-        const val USERNAME = "username"
     }
 
 }

@@ -1,10 +1,8 @@
-package com.example.mymeal.ui.viewmodel
+package com.example.mymealsproyect.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mymeal.domain.GetRandomRecipeUseCase
-import com.example.mymeal.domain.model.RecipeInformation
 import com.example.mymealsproyect.domain.GetUserInformationUseCase
 import com.example.mymealsproyect.domain.InsertUserInformationUseCase
 import com.example.mymealsproyect.domain.model.UiUserInformation
@@ -13,19 +11,24 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainFragmentViewModel @Inject constructor(
-    private val getRandomRecipeUseCase: GetRandomRecipeUseCase
+class MainActivityViewModel @Inject constructor(
+    private val getUserInformationUseCase: GetUserInformationUseCase,
+    private val insertUserInformationUseCase: InsertUserInformationUseCase
 ): ViewModel() {
 
-    val todayRecommendation = MutableLiveData<RecipeInformation>()
     val userInformation = MutableLiveData<UiUserInformation>()
 
-    fun getRandomRecipe(){
+
+    fun getUserInformation(){
         viewModelScope.launch {
-            val result = getRandomRecipeUseCase()
-            if (result != null){
-                todayRecommendation.postValue(result!!)
-            }
+            val information = getUserInformationUseCase()
+            userInformation.postValue(information)
+        }
+    }
+
+    fun insertUserInformation(userToInsert: UiUserInformation){
+        viewModelScope.launch {
+            insertUserInformationUseCase(userToInsert)
         }
     }
 }

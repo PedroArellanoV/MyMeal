@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
@@ -26,7 +25,6 @@ import com.example.mymeal.ui.view.RecipeInformationFragment.Companion.RECIPE_SUM
 import com.example.mymeal.ui.view.RecipeInformationFragment.Companion.RECIPE_TITLE
 import com.example.mymeal.ui.viewmodel.MainFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.callbackFlow
 
 
 @AndroidEntryPoint
@@ -79,6 +77,7 @@ class MainFragment : Fragment() {
         )
         parentFragmentManager.commit {
             setReorderingAllowed(true)
+            addToBackStack(null)
             add<RecipeInformationFragment>(R.id.fragment_container, args = bundle)
         }
     }

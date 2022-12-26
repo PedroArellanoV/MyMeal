@@ -1,10 +1,9 @@
-package com.example.mymeal.ui.view.adapter
+package com.example.mymealsproyect.ui.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -13,9 +12,9 @@ import com.example.mymeal.R
 import com.example.mymeal.databinding.ItemRecipeSearchBinding
 import com.example.mymeal.domain.model.RecipeResult
 
-class SearchRecipeAdapter(
+class SearchFragmentAdapter(
     private val recipes: List<RecipeResult>
-) : RecyclerView.Adapter<SearchRecipeAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SearchFragmentAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -33,16 +32,17 @@ class SearchRecipeAdapter(
         private val binding = ItemRecipeSearchBinding.bind(view)
 
         fun bind(recipe: RecipeResult) {
-            val name = recipe.title
+            val id = recipe.id
+            val title = recipe.title
             val image = recipe.image
 
-            Glide.with(itemView).load(image)
+            Glide.with(itemView)
+                .load(image)
                 .transform(MultiTransformation(CenterCrop(), RoundedCorners(16)))
                 .into(binding.ivRecipeSearch)
-
-            binding.tvRecipeName.text = name
-
+            binding.tvRecipeName.text = title
         }
+
     }
 
 }

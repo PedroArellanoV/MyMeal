@@ -21,4 +21,22 @@
         android:title="Shopping list"
         android:icon="@drawable/nav_view_shoppinglist"/>
 
+    <item android:title="User">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_view_settings"
+                android:title="Settings"
+                android:icon="@drawable/nav_view_settings"/>
+
+            <item
+                android:id="@+id/nav_view_logout"
+                android:title="Log out"
+                android:icon="@drawable/nav_view_logout"/>
+
+        </menu>
+
+    </item>
+
 </menu>
