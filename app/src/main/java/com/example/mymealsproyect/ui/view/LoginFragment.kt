@@ -9,9 +9,14 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.fragment.app.viewModels
 import com.example.mymeal.R
 import com.example.mymeal.databinding.FragmentLoginBinding
+import com.example.mymealsproyect.domain.model.UiUserInformation
+import com.example.mymealsproyect.ui.viewmodel.LoginFragmentViewModel
+import com.example.mymealsproyect.utils.PreferenceManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +24,8 @@ class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: LoginFragmentViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +64,10 @@ class LoginFragment : Fragment() {
                     binding.etPasswordLogin.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        viewModel.insertUserInDatabase(
+                            it.result.user?.email,
+                            requireContext()
+                        )
                         goToMainActivity(it.result?.user?.email ?: "", ProviderType.BASIC)
                     } else showAlert()
                 }
@@ -81,7 +92,7 @@ class LoginFragment : Fragment() {
         dialog.show()
     }
 
-    private fun goToMainActivity(email: String, provider: ProviderType){
+    private fun goToMainActivity(email: String, provider: ProviderType) {
 
         val intent = Intent(requireActivity(), MainActivity::class.java).apply {
             putExtra(EMAIL, email)
@@ -91,9 +102,12 @@ class LoginFragment : Fragment() {
 
     }
 
-    companion object{
+    companion object {
         const val EMAIL = "email"
         const val PROVIDER = "provider"
+        const val USERNAME = "username"
+        const val FIRSTNAME = "firstname"
+        const val LASTNAME = "lastname"
     }
 
 }

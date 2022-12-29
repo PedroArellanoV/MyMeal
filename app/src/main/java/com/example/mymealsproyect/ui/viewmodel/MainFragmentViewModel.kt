@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mymeal.domain.GetRandomRecipeUseCase
 import com.example.mymeal.domain.model.RecipeInformation
-import com.example.mymealsproyect.domain.GetUserInformationUseCase
-import com.example.mymealsproyect.domain.InsertUserInformationUseCase
 import com.example.mymealsproyect.domain.model.UiUserInformation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

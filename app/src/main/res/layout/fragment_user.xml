@@ -1,0 +1,170 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#91C3A9"
+    tools:context="com.example.mymealsproyect.ui.view.UserFragment">
+
+    <ImageView
+        android:id="@+id/ivUserBanner"
+        android:layout_width="0dp"
+        android:layout_height="162dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="#D9D9D9" />
+
+    <ImageView
+        android:id="@+id/ivUserAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/user_view_avatar_iv_shape"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUserFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/fredoka_regular"
+        android:textColor="#37453D"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/ivUserAvatar"
+        app:layout_constraintTop_toBottomOf="@id/ivUserBanner"
+        tools:text="User Full Name" />
+
+    <TextView
+        android:id="@+id/tvUserUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fredoka_regular"
+        android:textColor="#37453D"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/tvUserFullName"
+        app:layout_constraintTop_toBottomOf="@id/tvUserFullName"
+        tools:text="username" />
+
+    <TextView
+        android:id="@+id/tvUserDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="13dp"
+        android:fontFamily="@font/fredoka_regular"
+        android:maxLines="2"
+        android:textColor="#37453D"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivUserAvatar"
+        tools:text="Here goes the user description, here goes the user description, here goes the user description." />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginVertical="12dp"
+        android:background="#DCEFE5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUserDescription" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvFavouriteRecipe"
+        android:layout_width="0dp"
+        android:layout_height="143dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="#DCEFE5"
+        app:cardCornerRadius="13dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:background="@drawable/search_item_shape"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivRecipeSearch"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/view"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@color/green_background" />
+
+
+            <TextView
+                android:id="@+id/tvAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fredoka_regular"
+                android:textColor="@color/green_text_dark"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="author" />
+
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="@font/fredoka_regular"
+                android:textColor="@color/green_text_dark"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="type" />
+
+            <TextView
+                android:id="@+id/tvRecipeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="@font/fredoka_medium"
+                android:textColor="#37453D"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/tvType"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Recipe name" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginVertical="12dp"
+        android:background="#DCEFE5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvFavouriteRecipe"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMyMeals"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_users_recipes"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,8 +10,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.fragment.app.viewModels
 import com.example.mymeal.R
 import com.example.mymeal.databinding.FragmentRegisterBinding
+import com.example.mymealsproyect.ui.view.LoginFragment.Companion.EMAIL
+import com.example.mymealsproyect.ui.view.LoginFragment.Companion.FIRSTNAME
+import com.example.mymealsproyect.ui.view.LoginFragment.Companion.LASTNAME
+import com.example.mymealsproyect.ui.view.LoginFragment.Companion.PROVIDER
+import com.example.mymealsproyect.ui.view.LoginFragment.Companion.USERNAME
+import com.example.mymealsproyect.ui.viewmodel.RegisterFragmentViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,16 +28,10 @@ class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
-
-    private var param1: String? = null
-    private var param2: String? = null
+    private val viewModel: RegisterFragmentViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -70,6 +71,7 @@ class RegisterFragment : Fragment() {
                 .createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
+                        viewModel.insertUserInDatabase(it.result.user?.email, requireContext())
                         startActivity(
                             it.result?.user?.email ?: "",
                             ProviderType.BASIC,
@@ -120,27 +122,5 @@ class RegisterFragment : Fragment() {
         )
 
         startActivity(intent)
-    }
-
-    companion object {
-
-        const val EMAIL = "email"
-        const val PROVIDER = "provider"
-        const val USERNAME = "username"
-        const val FIRSTNAME = "firstname"
-        const val LASTNAME = "lastname"
-
-        private const val ARG_PARAM1 = "param1"
-        private const val ARG_PARAM2 = "param2"
-
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -14,10 +15,14 @@ import com.example.mymeal.R
 import com.example.mymeal.databinding.ActivityMainBinding
 import com.example.mymeal.ui.view.MainFragment
 import com.example.mymealsproyect.domain.model.UiUserInformation
+import com.example.mymealsproyect.ui.view.LoginFragment.Companion.EMAIL
+import com.example.mymealsproyect.ui.view.LoginFragment.Companion.FIRSTNAME
+import com.example.mymealsproyect.ui.view.LoginFragment.Companion.LASTNAME
+import com.example.mymealsproyect.ui.view.LoginFragment.Companion.USERNAME
 import com.example.mymealsproyect.ui.viewmodel.MainActivityViewModel
+import com.example.mymealsproyect.utils.PreferenceManager
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 
 enum class ProviderType {
@@ -28,6 +33,7 @@ enum class ProviderType {
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var user: UiUserInformation
     private val viewModel: MainActivityViewModel by viewModels()
 
 
@@ -37,12 +43,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         checkUserLogged()
-        //Setup
 
-
-        val navView: NavigationView = binding.navView
-
-        navView.setNavigationItemSelectedListener {
+        binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_view_home -> replaceFragment(MainFragment())
 //                R.id.nav_view_favourite -> replaceFragment(FavouriteFragment())
@@ -55,11 +57,11 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-
         binding.bnvMainActivity.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.mHome -> replaceFragment(MainFragment())
                 R.id.mSearch -> replaceFragment(SearchFragment())
+                R.id.mUser -> replaceFragment(UserFragment())
 
                 else -> {}
             }
@@ -67,20 +69,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Crear objeto a la hora de registrarse, y guardarlo en Room.
+    private fun setupUserInformation() {
+        val pref = PreferenceManager(this)
 
-    private fun insertUserInDatabase(email: String?) {
-        val firebaseDB = FirebaseFirestore.getInstance()
+        val username = pref.getStringPref(USERNAME)
+        val firstname = pref.getStringPref(FIRSTNAME)
+        val lastname = pref.getStringPref(LASTNAME)
+        val email = pref.getStringPref(EMAIL)
 
-        firebaseDB.collection("users").document(email ?: "").get().addOnSuccessListener {
-            val textview = findViewById<TextView>(R.id.tvHeaderUserName)
-            textview.text = it.get("username") as String?
+        user = UiUserInformation(firstname, lastname, username, email)
 
-            val firstname = it.get("firstname") as String?
-            val lastname = it.get("lastname") as String?
-            val username = it.get("username") as String?
-
-        }
+        Log.d("pedro", user.username)
+        val view = binding.navView.getHeaderView(0)
+        view.findViewById<TextView>(R.id.tvHeaderUserName).text = user.username
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -94,16 +95,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUserLogged() {
         val mAuth = FirebaseAuth.getInstance()
-        val mEmail = mAuth.currentUser?.email
 
         if (mAuth.currentUser != null) {
             commitMainFragment()
-            insertUserInDatabase(mEmail)
+            setupUserInformation()
         } else {
             commitAuthActivity()
         }
     }
-
 
     private fun commitMainFragment() {
         supportFragmentManager.commit {
@@ -119,6 +118,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun logoutRequest() {
         val logout = { dialog: DialogInterface, which: Int ->
+
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
